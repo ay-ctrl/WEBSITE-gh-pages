@@ -123,7 +123,37 @@
             <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
         </a>
     </div>
-
+    <script>
+        async function dosyaYukle() {
+          const dosyaInput = document.getElementById('dosya');
+          const dosya = dosyaInput.files[0];
+      
+          if (!dosya) {
+            alert("Lütfen bir dosya seçin!");
+            return;
+          }
+      
+          const formData = new FormData();
+          formData.append('dosya', dosya);
+      
+          try {
+            const response = await fetch('/upload', {
+              method: 'POST',
+              body: formData,
+            });
+      
+            const result = await response.json();
+            if (response.ok) {
+              alert("Dosya başarıyla yüklendi! URL: " + result.imageURL);
+            } else {
+              alert("Hata: " + result.message);
+            }
+          } catch (error) {
+            console.error(error);
+            alert("Bir hata oluştu!");
+          }
+        }
+      </script>
 
 </body>
 
