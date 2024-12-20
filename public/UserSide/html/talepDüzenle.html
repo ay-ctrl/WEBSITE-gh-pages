@@ -16,8 +16,10 @@
     <meta property="og:description" content=" Hızlı ve güvenilir tamir için hemen ulaşın.">
     <meta property="og:url" content="https://telefon-tamiri-seng209-211.com.tr/">
     <link rel="stylesheet" href="../css/talepDüzenle.css">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
     <!-- URL LİNKİNİ DAHA GÜZEL BİR ŞEY YAP PLS-->
 </head>
 
@@ -59,71 +61,74 @@
         <form>
             <!-- Talep numarası -->
             <div class="form-row">
-                <label for="talepNo">Talep numarası:</label>
-                <input type="text" id="talepNo" value="3457867" readonly>
+                <label for="queryNum">Talep numarası:</label>
+                <input type="text" id="queryNum" value="3457867" readonly>
             </div>
             <!-- Müşteri Adı -->
             <div class="form-row">
                 <label for="musteriAdi">Müşteri Adı:</label>
-                <input type="text" id="musteriAdi" value="Ayse Atik">
+                <input type="text" id="name" value="Ayse Atik" readonly>
             </div>
             <!-- Telefon Modeli -->
             <div class="form-row">
                 <label for="model">Telefon Modeli:</label>
-                <input type="text" id="model" value="Huawei A7">
+                <input type="text" id="model" value="Huawei A7" readonly>
             </div>
             <!-- Telefon No -->
             <div class="form-row">
                 <label for="telefonNo">Telefon No:</label>
-                <input type="text" id="telefonNo">
+                <input type="text" id="phone" readonly>
             </div>
             <!-- Adresi -->
             <div class="form-row">
                 <label for="adres">Adresi:</label>
-                <input type="text" id="adres">
+                <input type="text" id="adress" readonly>
             </div>
             <!-- IMEI Numarası -->
             <div class="form-row">
                 <label for="imei">Cihazın IMEI Numarası:</label>
-                <input type="text" id="imei">
+                <input type="text" id="imei" readonly>
             </div>
             <!-- Cihazın Tuş Kilidi -->
             <div class="form-row">
                 <label for="kilit">Cihazın Tuş Kilidi:</label>
-                <input type="text" id="kilit">
+                <input type="text" id="kilit" readonly>
             </div>
             <!-- Cihazın Geliş Tarihi -->
             <div class="form-row">
                 <label for="gelisTarihi">Cihazın Geliş Tarihi:</label>
-                <input type="date" id="gelisTarihi">
+                <input type="date" id="phoneTakenDate">
             </div>
             <!-- Problem -->
             <div class="form-row">
                 <label for="problem">Problem:</label>
-                <input type="text" id="problem">
+                <input type="text" id="sorunlar" readonly>
             </div>
             <!-- Durumu -->
             <div class="form-row">
                 <label for="durum">Durumu:</label>
-                <select id="durum">
+                <select id="state">
                     <option>Durumu Güncelleyin</option>
+                    <option>Yapiliyor</option>
+                    <option>Yapildi</option>
+                    <option>Parça bekleniyor</option>
                 </select>
             </div>
 
             <!-- Yapılan İşlem -->
             <div class="form-row">
                 <label for="yapilan">Yapılan İşlem:</label>
-                <input type="text" id="yapilan">
+                <input type="text" id="processMade">
             </div>
             <!-- Ücret -->
             <div class="form-row">
                 <label for="ucret">Ücret:</label>
-                <input type="text" id="ucret">
+                <input type="text" id="price">
             </div>
             <!-- Servisin onarım açıklaması -->
             <div class="form-row-large">
                 <label for="aciklama">Servisin onarım açıklaması:</label>
-                <textarea id="aciklama" rows="3" placeholder="Açıklamayı giriniz"></textarea>
+                <textarea id="repairDescription" rows="3" placeholder="Açıklamayı giriniz"></textarea>
             </div>
 
             <!-- Hakediş durumu 
@@ -133,11 +138,12 @@
             </div> -->
             <!-- Butonlar -->
             <div class="button-container">
-                <button type="button" class="save-btn">KAYDET</button>
+                <button type="button" class="save-btn" onclick="updateRepairRequest(id)">KAYDET</button>
                 <button type="button" class="print-btn">YAZDIR</button>
             </div>
         </form>
     </div>
+
 
 
     <!-- Footer -->
@@ -189,76 +195,141 @@
     </div>
 
     <script>
-                async function loadRepairRequest(id) {
-            try {
-                const response = await fetch(`http://localhost:3000/get-requests/${id}`);
-                const data = await response.json();
-
-                // Eğer talep mevcutsa, formu verilerle doldur
-                if (data) {
-                    document.getElementById('talepNo').value = data.queryNum;
-                    document.getElementById('musteriAdi').value = data.name;
-                    document.getElementById('model').value = data.model;
-                    document.getElementById('telefonNo').value = data.phone;
-                    document.getElementById('adres').value = data.adress;
-                    document.getElementById('imei').value = data.imei;
-                    document.getElementById('kilit').value = data.kilit;
-                    document.getElementById('durum').value = data.state;
-                    document.getElementById('problem').value = data.sorunlar.join(',');
-                    document.getElementById('ucret').value = data.price;
-                    document.getElementById('yapilan').value = data.processMade;
-                    document.getElementById('aciklama').value = data.repairDescription;
-                }
-            } catch (error) {
-                console.error('Talep yüklenemedi:', error);
-            }
+        async function loadRepairRequest(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/get-request/${id}`);
+        if (!response.ok) {
+            throw new Error(`Talep bulunamadı, HTTP Durum: ${response.status}`);
         }
 
-        // Sayfa yüklendiğinde URL parametresindeki id'yi alıp, talebi yükleyin
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const requestId = urlParams.get('id');
-            loadRepairRequest(requestId);
-        });
+        const data = await response.json();
 
-        // Güncelleme işlemi
-        async function updateRepairRequest() {
-            const updatedData = {
-                name: document.getElementById('musteriAdi').value,
-                model: document.getElementById('model').value,
-                phone: document.getElementById('telefonNo').value,
-                adress: document.getElementById('adres').value,
-                sorunlar: document.getElementById('problem').value.split(','), // Çoklu sorunlar virgülle ayrılabilir
-                imei: document.getElementById('imei').value,
-                kilit: document.getElementById('kilit').value,
-                state: document.getElementById('durum').value,
-                price: document.getElementById('ucret').value,
-                processMade: document.getElementById('yapilan').value,
-                repairDescription: document.getElementById('aciklama').value
-            };
+        // Tablodaki verileri güncelle (Eğer tablo için bir <tbody id="tableBody"> varsa)
+        const tableBody = document.getElementById('tableBody');
+        if (tableBody) {
+            tableBody.innerHTML = ''; // Önceki tablo satırlarını temizle
 
-            try {
-                const response = await fetch(`http://localhost:3000/update-request/${document.getElementById('talepNo').value}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(updatedData)
-                });
-                
-                const data = await response.json();
-                if (data) {
-                    alert('Talep başarıyla güncellendi');
-                }
-            } catch (error) {
-                console.error('Talep güncellenemedi:', error);
-            }
+            Object.entries(data).forEach(([key, value]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${key}</td>
+                    <td>${value}</td>
+                `;
+                tableBody.appendChild(row);
+            });
         }
 
-        // Save butonuna tıklanınca updateRepairRequest() fonksiyonunu çağır
-        document.querySelector('.save-btn').addEventListener('click', updateRepairRequest);
+        // Form alanlarını doldur
+        for (const [key, value] of Object.entries(data)) {
+            const formElement = document.getElementById(key); // ID, data'nın key'ine eşitse
+            if (formElement) {
+                formElement.value = value || ''; // Form alanı mevcutsa doldur
+            }
+        }
+    } catch (error) {
+        console.error('Talep yüklenemedi:', error);
+    }
+}
 
-    </script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestId = urlParams.get('id');
+        // Talebi güncelleme işlemi
+    async function updateRepairRequest() {
+        const updatedData = {
+            state: document.getElementById('state').value,
+            price: document.getElementById('price').value,
+            processMade: document.getElementById('processMade').value,
+            repairDescription: document.getElementById('repairDescription').value
+        };
+
+        try {
+            const response = await fetch(`http://localhost:3000/api/update-request/${requestId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+
+            const data = await response.json();
+            if (data) {
+                alert('Talep başarıyla güncellendi');
+            }
+        } catch (error) {
+            console.error('Talep güncellenemedi:', error);
+        }
+    }
+
+   // Sayfa yüklendiğinde URL parametresindeki id'yi alıp, talebi yükleyin
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestId = urlParams.get('id');
+    loadRepairRequest(requestId);
+});
+
+document.querySelector('.print-btn').addEventListener('click', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Başlık
+    doc.setFontSize(16);
+    doc.text('Talep Bilgileri', 105, 20, null, null, 'center'); // Ortalanmış başlık
+
+    // Formdaki bilgileri al
+    const queryNum = document.getElementById('queryNum').value;
+    const name = document.getElementById('name').value;
+    const model = document.getElementById('model').value;
+    const phone = document.getElementById('phone').value;
+    const adress = document.getElementById('adress').value;
+    const imei = document.getElementById('imei').value;
+    const kilit = document.getElementById('kilit').value;
+    const phoneTakenDate = document.getElementById('phoneTakenDate').value;
+    const sorunlar = document.getElementById('sorunlar').value;
+    const state = document.getElementById('state').value;
+    const processMade = document.getElementById('processMade').value;
+    const price = document.getElementById('price').value;
+    const repairDescription = document.getElementById('repairDescription').value;
+
+    // Form verilerini düzenli bir şekilde PDF'ye ekleme
+    let yPosition = 30;
+
+    // Başlıklar
+    const labels = [
+        'Talep No:', 'Müsteri Adi:', 'Telefon Modeli:', 'Telefon No:', 'Adres:', 'IMEI:',
+        'Tus Kilidi:', 'Cihazin Gelis Tarihi:', 'Problem:', 'Durum:', 'Yapilan İslem:',
+        'Ücret:', 'Onarim Açiklamasi:'
+    ];
+
+    const values = [
+        queryNum, name, model, phone, adress, imei, kilit, phoneTakenDate,
+        sorunlar, state, processMade, price, repairDescription
+    ];
+
+    // Veri ekleme işlemi
+    doc.setFontSize(12);
+    for (let i = 0; i < labels.length; i++) {
+        doc.text(`${labels[i]} ${values[i]}`, 10, yPosition);
+        yPosition += 10;
+    }
+
+    // Renkli kutu (onarım açıklaması için)
+    doc.setDrawColor(0, 0, 255); // Mavi
+    doc.setFillColor(220, 220, 220); // Gri
+    doc.rect(10, yPosition, 190, 30, 'F'); // Kutuyu çiz
+    doc.setFontSize(12);
+    doc.text('Onarım Açıklaması:', 10, yPosition + 10);
+    doc.text(repairDescription, 10, yPosition + 20);
+
+    // PDF dosyasını kaydet
+    doc.save('talep_bilgisi.pdf');
+});
+
+
+
+    
+   
+
+</script>
 
 </body>
 
