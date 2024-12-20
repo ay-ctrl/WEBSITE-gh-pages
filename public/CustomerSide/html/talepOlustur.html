@@ -70,16 +70,16 @@
             <!-- Sorun Seçimi Açılır Menü -->
             <label for="sorunlar">Karşılaşılan Sorun:</label>
             <select id="sorunlar" name="sorunlar" multiple>
-                <option value="Ekran">Ekran Sorunları</option>
-                <option value="Batarya">Batarya Sorunları</option>
-                <option value="Ses">Ses Sorunları</option>
-                <option value="Kamera">Kamera Sorunları</option>
-                <option value="Tus">Tuş Sorunları</option>
-                <option value="Ag">Ağ/Bağlantı Sorunlar</option>
-                <option value="Kozmetik">Kozmetik Sorunları</option>
-                <option value="Titreşim">Titreşim Sorunları</option>
-                <option value="Sıvı">Sıvı Teması</option>
-                <option value="Cam">Cam Değişimi</option>
+                <option value="Ekran Sorunları">Ekran Sorunları</option>
+                <option value="Batarya Sorunları">Batarya Sorunları</option>
+                <option value="Ses Sorunları">Ses Sorunları</option>
+                <option value="Kamera Sorunları">Kamera Sorunları</option>
+                <option value="Tuş Sorunları">Tuş Sorunları</option>
+                <option value="Ağ/Bağlantı Sorunları">Ağ/Bağlantı Sorunlar</option>
+                <option value="Kozmetik Sorunları">Kozmetik Sorunları</option>
+                <option value="Titreşim Sorunları">Titreşim Sorunları</option>
+                <option value="Sıvı Teması">Sıvı Teması</option>
+                <option value="Cam Değişimi">Cam Değişimi</option>
                 <option value="Diğer">Diğer</option>
             </select>
 
@@ -92,11 +92,11 @@
             <div class="radio-group">
                 <p>Yedek Cihaz İstiyor Musunuz?</p>
                 <label>
-                    <input type="radio" name="yedek-cihaz" value="evet">
+                    <input type="radio" name="yedekCihaz" value="evet">
                     Evet
                 </label>
                 <label>
-                    <input type="radio" name="yedek-cihaz" value="hayir">
+                    <input type="radio" name="yedekCihaz" value="hayir">
                     Hayır
                 </label>
             </div>
@@ -169,7 +169,10 @@
     
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries()); // Form verilerini bir nesneye çevir
-    
+               // Form verilerini alırken, her birini temizliyoruz (trim())
+            formData.forEach((value, key) => {
+                data[key] = value.trim(); // Her alanın başındaki ve sonundaki boşlukları kaldırıyoruz
+            });
             try {
                 const response = await fetch('http://localhost:3000/api/repairRequests', {
                     method: 'POST',
