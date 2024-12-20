@@ -220,20 +220,20 @@ tbody tr:nth-child(even) {
 }
 
 /* SAYFALAMA */
-.pagination {
+#pagination-container {
     text-align: center;
     margin: 20px 0;
 }
 
-.pagination a,
-.pagination span {
+#pagination-container a,
+#pagination-container span {
     margin: 0 5px;
     text-decoration: none;
     color: #000;
     font-weight: bold;
 }
 
-.pagination a:hover {
+#pagination-container a:hover {
     color: #e6b800;
 }
 

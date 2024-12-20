@@ -69,7 +69,7 @@
     </section>
 
     <!-- TALEP TABLOSU -->
-    <section class="table-container">
+    <section class="requests-container">
         <table>
             <thead>
                 <tr>
@@ -93,7 +93,7 @@
     </section>
 
     <!-- SAYFALAMA -->
-    <section class="pagination">
+    <section id="pagination-container" class="container">
         <a href="#">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
@@ -153,56 +153,77 @@
     </div>
 
     <script>
-        // Talepleri tabloya ekleme
-        async function loadRequests() {
+        async function fetchRequests(page = 1) {
             try {
-                const response = await fetch('http://localhost:3000/get-requests');
-                const requests = await response.json();
-
-                const tbody = document.querySelector('tbody');
-                tbody.innerHTML = ''; // Mevcut içeriği temizle
-
-                requests.forEach(request => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${request.queryNum}</td>
-                        <td>${request.model}</td>
-                        <td>${request.name}</td>
-                        <td>${request.phone}</td>
-                        <td>${request.sorunlar}</td>
-                        <td>${new Date(request.createdAt).toLocaleString('tr-TR')}</td>
-                        <td>${request.state}</td>
-                        <td>${request.yedekCihaz}</td>
-                        <td>${request.price}</td>
-                        <td><button onclick="editRequest('${request._id}')">📝</button></td>
-                        <td><button onclick="deleteRequest('${request._id}')">🗑️</button></td>
-                    `;
-                    tbody.appendChild(row);
-                });
+                const response = await fetch(`http://localhost:3000/get-requests?page=${page}`);
+                const data = await response.json();
+                displayRequests(data.requests);
+                displayPagination(data.totalPages, data.currentPage);
             } catch (err) {
-                console.error('Talepler yüklenemedi:', err);
+                console.error('Error fetching requests:', err);
             }
         }
 
-        // Talep Silme
-        async function deleteRequest(id) {
-            if (!confirm('Bu talebi silmek istediğinize emin misiniz?')) return;
+        function displayRequests(requests) {
+            const tbody = document.querySelector('tbody');
+            tbody.innerHTML = '';  // Mevcut içeriği temizle
 
-            try {
-                await fetch(`http://localhost:3000/delete-request/${id}`, { method: 'DELETE' });
-                alert('Talep silindi.');
-                loadRequests(); // Tabloyu yeniden yükle
-            } catch (err) {
-                console.error('Talep silinemedi:', err);
-            }
+            // Talepleri tabloya ekleyin
+            requests.forEach(request => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${request.queryNum}</td>
+                    <td>${request.model}</td>
+                    <td>${request.name}</td>
+                    <td>${request.phone}</td>
+                    <td>${request.sorunlar}</td>
+                    <td>${new Date(request.createdAt).toLocaleString('tr-TR')}</td>
+                    <td>${request.state}</td>
+                    <td>${request.yedekCihaz}</td>
+                    <td>${request.price}</td>
+                    <td><button onclick="editRequest('${request._id}')">📝</button></td>
+                    <td><button onclick="deleteRequest('${request._id}')">🗑️</button></td>
+                `;
+                tbody.appendChild(row);
+            });
         }
-        // Talep Düzenleme
-        function editRequest(id) {
-            window.location.href = `talepDüzenle.html?id=${id}`;
+
+        function displayPagination(totalPages, currentPage) {
+            const container = document.getElementById('pagination-container');
+            container.innerHTML = '';  // Önceki sayfa numaralarını temizle
+
+            // Önceki sayfaya geçiş
+            if (currentPage > 1) {
+                const prevPage = document.createElement('button');
+                prevPage.textContent = 'Önceki';
+                prevPage.onclick = () => fetchRequests(currentPage - 1);
+                container.appendChild(prevPage);
+            }
+
+            // Sayfa numaraları
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                if (i === currentPage) {
+                    pageBtn.disabled = true;  // Geçerli sayfa için butonu devre dışı bırak
+                } else {
+                    pageBtn.onclick = () => fetchRequests(i);
+                }
+                container.appendChild(pageBtn);
+            }
+
+            // Sonraki sayfaya geçiş
+            if (currentPage < totalPages) {
+                const nextPage = document.createElement('button');
+                nextPage.textContent = 'Sonraki';
+                nextPage.onclick = () => fetchRequests(currentPage + 1);
+                container.appendChild(nextPage);
+            }
         }
 
         // Sayfa yüklendiğinde talepleri yükle
-        document.addEventListener('DOMContentLoaded', loadRequests);
+        document.addEventListener('DOMContentLoaded', () => fetchRequests());
+
     </script>
 </body>
 
