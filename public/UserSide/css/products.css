@@ -214,15 +214,16 @@ header {
 
 
 
+
 /* Sayfalama */
-.pagination {
+#pagination {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     margin-top:100px;
 }
 
-.pagination a {
+#pagination a {
     color: white;
     text-decoration: none;
     padding: 8px 12px;
@@ -232,7 +233,7 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.pagination a:hover {
+#pagination a:hover {
     background-color: #f27A1A;
     color: #fff;
 }
