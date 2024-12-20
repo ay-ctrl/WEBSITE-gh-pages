@@ -181,7 +181,7 @@
                     <td>${request.state}</td>
                     <td>${request.yedekCihaz}</td>
                     <td>${request.price}</td>
-                    <td><button onclick="editRequest('${request._id}')">📝</button></td>
+                     <td><a href="talepDüzenle.html?id=${request._id}"><button>📝</button></a></td>
                     <td><button onclick="deleteRequest('${request._id}')">🗑️</button></td>
                 `;
                 tbody.appendChild(row);
@@ -218,6 +218,30 @@
                 nextPage.textContent = 'Sonraki';
                 nextPage.onclick = () => fetchRequests(currentPage + 1);
                 container.appendChild(nextPage);
+            }
+        }
+
+        async function deleteRequest(id) {
+           // Kullanıcıdan silme işlemini onaylamasını istiyoruz
+            const isConfirmed = confirm('Bu talebi silmek istediğinizden emin misiniz?');
+
+            if (isConfirmed) {
+                try {
+                    const response = await fetch(`http://localhost:3000/delete-request/${id}`, {
+                        method: 'DELETE', // DELETE isteğini gönderiyoruz
+                    });
+
+                    if (response.ok) {
+                        console.log('Talep silindi');
+                        fetchRequests(); // Taleplerin güncellenmesi için yeniden istek yapılabilir
+                    } else {
+                        console.error('Silme başarısız');
+                    }
+                } catch (err) {
+                    console.error('Hata:', err);
+                }
+            } else {
+                console.log('Silme işlemi iptal edildi.');
             }
         }
 

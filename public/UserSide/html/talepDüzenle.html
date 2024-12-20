@@ -188,6 +188,77 @@
         </a>
     </div>
 
+    <script>
+                async function loadRepairRequest(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/get-requests/${id}`);
+                const data = await response.json();
+
+                // Eğer talep mevcutsa, formu verilerle doldur
+                if (data) {
+                    document.getElementById('talepNo').value = data.queryNum;
+                    document.getElementById('musteriAdi').value = data.name;
+                    document.getElementById('model').value = data.model;
+                    document.getElementById('telefonNo').value = data.phone;
+                    document.getElementById('adres').value = data.adress;
+                    document.getElementById('imei').value = data.imei;
+                    document.getElementById('kilit').value = data.kilit;
+                    document.getElementById('durum').value = data.state;
+                    document.getElementById('problem').value = data.sorunlar.join(',');
+                    document.getElementById('ucret').value = data.price;
+                    document.getElementById('yapilan').value = data.processMade;
+                    document.getElementById('aciklama').value = data.repairDescription;
+                }
+            } catch (error) {
+                console.error('Talep yüklenemedi:', error);
+            }
+        }
+
+        // Sayfa yüklendiğinde URL parametresindeki id'yi alıp, talebi yükleyin
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const requestId = urlParams.get('id');
+            loadRepairRequest(requestId);
+        });
+
+        // Güncelleme işlemi
+        async function updateRepairRequest() {
+            const updatedData = {
+                name: document.getElementById('musteriAdi').value,
+                model: document.getElementById('model').value,
+                phone: document.getElementById('telefonNo').value,
+                adress: document.getElementById('adres').value,
+                sorunlar: document.getElementById('problem').value.split(','), // Çoklu sorunlar virgülle ayrılabilir
+                imei: document.getElementById('imei').value,
+                kilit: document.getElementById('kilit').value,
+                state: document.getElementById('durum').value,
+                price: document.getElementById('ucret').value,
+                processMade: document.getElementById('yapilan').value,
+                repairDescription: document.getElementById('aciklama').value
+            };
+
+            try {
+                const response = await fetch(`http://localhost:3000/update-request/${document.getElementById('talepNo').value}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedData)
+                });
+                
+                const data = await response.json();
+                if (data) {
+                    alert('Talep başarıyla güncellendi');
+                }
+            } catch (error) {
+                console.error('Talep güncellenemedi:', error);
+            }
+        }
+
+        // Save butonuna tıklanınca updateRepairRequest() fonksiyonunu çağır
+        document.querySelector('.save-btn').addEventListener('click', updateRepairRequest);
+
+    </script>
 
 </body>
 
