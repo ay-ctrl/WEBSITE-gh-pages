@@ -16,7 +16,6 @@
     <meta property="og:description" content=" Hızlı ve güvenilir tamir için hemen ulaşın.">
     <meta property="og:url" content="https://telefon-tamiri-seng209-211.com.tr/">
     <link rel="stylesheet" href="../css/products.css">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <!-- URL LİNKİNİ DAHA GÜZEL BİR ŞEY YAP PLS-->
 </head>
@@ -55,7 +54,7 @@
     </header>
 
     <h1 class="main-title">Mağazadaki Ürünler</h1>
-    <div class="products">
+    <div class="products" id="product-list">
         <div class="product-card">
             <img src="https://coflex.com.tr/wp-content/uploads/2021/01/resim-yok.jpg"
                 alt="Ürün 1">
@@ -162,6 +161,57 @@
         </a>
     </div>
 
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/products'); // Backend API endpoint'i
+                const products = await response.json();  // JSON olarak veriyi al
+
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = '';  // Önceki içerikleri temizle
+
+                products.forEach(product => {
+                    const productCard = `
+    <div class="product-card" id="product-${product._id}">
+        <img src="${product.photos[0] || 'https://coflex.com.tr/wp-content/uploads/2021/01/resim-yok.jpg'}" alt="${product.name}">
+        <div class="product-info">
+            <h3>Ürün Adı: ${product.name}</h3>
+            <p class="price">Fiyat: ${product.price} TL</p>
+            <p>${product.description}</p>
+            <button class="ekle-btn" onclick="deleteProduct('${product._id}')">ÜRÜNÜ SİL</button>
+        </div>
+    </div>
+`;
+productList.innerHTML += productCard;  // Ürün kartlarını sayfaya ekle
+
+                });
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+
+        fetchProducts();  // Sayfa yüklendiğinde ürünleri al
+
+            async function deleteProduct(productId) {
+        try {
+            const response = await fetch(`http://localhost:3000/products/${productId}`, {
+                method: 'DELETE',  // HTTP DELETE isteği gönderiyoruz
+            });
+
+            if (response.ok) {
+                alert("Ürün başarıyla silindi.");
+                // Ürünü sayfadan kaldır
+                document.getElementById(`product-${productId}`).remove();
+            } else {
+                alert("Ürün silinirken bir hata oluştu.");
+            }
+        } catch (error) {
+            console.error("Silme işlemi sırasında hata:", error);
+            alert("Silme işlemi sırasında bir hata oluştu.");
+        }
+    }
+
+    </script>
 </body>
 
 </html>

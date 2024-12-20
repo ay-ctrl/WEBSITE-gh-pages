@@ -59,14 +59,14 @@
         <h1>TALEPLERİM</h1>
     </section>
 
-    <!-- ARAMA ALANI -->
+    <!-- ARAMA ALANI 
     <section class="search-bar">
         <div class="search-container">
             <label for="search"></label>
             <input type="text" id="search" placeholder="Talep no/ Müşteri Adı vs">
             <button class="search-btn">ARA</button>
         </div>
-    </section>
+    </section> -->
 
     <!-- TALEP TABLOSU -->
     <section class="requests-container">
@@ -164,6 +164,7 @@
             }
         }
 
+
         function displayRequests(requests) {
             const tbody = document.querySelector('tbody');
             tbody.innerHTML = '';  // Mevcut içeriği temizle
@@ -188,6 +189,7 @@
             });
         }
 
+        
         function displayPagination(totalPages, currentPage) {
             const container = document.getElementById('pagination-container');
             container.innerHTML = '';  // Önceki sayfa numaralarını temizle
@@ -220,6 +222,8 @@
                 container.appendChild(nextPage);
             }
         }
+            
+
 
         async function deleteRequest(id) {
            // Kullanıcıdan silme işlemini onaylamasını istiyoruz
@@ -247,6 +251,13 @@
 
         // Sayfa yüklendiğinde talepleri yükle
         document.addEventListener('DOMContentLoaded', () => fetchRequests());
+
+        document.querySelector('.search-btn').addEventListener('click', function() {
+        const searchTerm = document.querySelector('#search').value.trim();
+        fetchRequests(1, searchTerm); // Arama terimi ile talepleri yeniden yükle
+        });
+
+
 
     </script>
 </body>

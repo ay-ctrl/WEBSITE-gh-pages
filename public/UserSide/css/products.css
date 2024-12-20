@@ -6,6 +6,7 @@ body {
     color: #fff;
 }
 
+
 /* Header */
 header {
     display: flex;
@@ -154,7 +155,7 @@ header {
 /* Ürün resminin boyutu */
 .product-card img {
     width: 100%; /* Resim genişliği */
-    height: 250px; /* Resim yüksekliği */
+    height: 500px; /* Resim yüksekliği */
     object-fit: cover; /* Resmin kutuya uyum sağlaması */
     margin-bottom: 10px;
 }
