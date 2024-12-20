@@ -16,7 +16,6 @@
     <meta property="og:description" content=" Hızlı ve güvenilir tamir için hemen ulaşın.">
     <meta property="og:url" content="https://telefon-tamiri-seng209-211.com.tr/">
     <link rel="stylesheet" href="../css/medyaEkle.css">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <!-- URL LİNKİNİ DAHA GÜZEL BİR ŞEY YAP PLS-->
 </head>
@@ -72,7 +71,7 @@
             </div>
 
             <!-- Ekle Butonu -->
-            <button class="ekle-btn">EKLE</button>
+            <button class="ekle-btn" onclick="submitForm()">EKLE</button>
         </div>
     </main>
 
@@ -123,7 +122,35 @@
             <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
         </a>
     </div>
-
+    
+    <script>
+        async function submitForm() {
+            // Form elemanlarını al
+            const aciklama = document.getElementById('aciklama').value;
+            const dosya = document.getElementById('dosya').files[0];
+    
+            const formData = new FormData();
+            formData.append('aciklama', aciklama);
+            formData.append('dosya', dosya);
+    
+            // Form verilerini backend'e gönder
+            try {
+                const response = await fetch('http://localhost:3000/upload-media', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                if (data.success) {
+                    alert('Medya başarıyla eklendi!');
+                } else {
+                    alert('Bir hata oluştu1!');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Bir hata oluştu!2');
+            }
+        }
+    </script>
 
 </body>
 
