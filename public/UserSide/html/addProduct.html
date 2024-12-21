@@ -15,7 +15,7 @@
     <meta property="og:title" content="Uygun Fiyatlarla Akıllı Cihaz Tamir Hizmeti Sizlerle">
     <meta property="og:description" content=" Hızlı ve güvenilir tamir için hemen ulaşın.">
     <meta property="og:url" content="https://telefon-tamiri-seng209-211.com.tr/">
-    <link rel="stylesheet" href="../css/updateProduct.css">
+    <link rel="stylesheet" href="../css/addProduct.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <!-- URL LİNKİNİ DAHA GÜZEL BİR ŞEY YAP PLS-->
 </head>
@@ -23,7 +23,6 @@
 <body class="main page-loading animation">
    <!-- Header -->
    <header>
-    <!-- Logo -->
     <div class="logo">
         <a href="dashboard.html">
             <img src="https://img.pikbest.com/origin/09/23/99/24DpIkbEsTkVb.png!sw800" alt="Telefon Tamiri"
@@ -48,89 +47,95 @@
                 </div>
             </li>
         </ul>
-    
+
     </nav>
 
 </header>
 
-    <!-- Ana İçerik Alanı -->
-    <main class="hakkimizda-container">
-        <h2 class="title">AKSESUAR VE EK ÜRÜNLER</h2>
-        <div class="form-container">
-            <!--Ürün Adı-->
-            <div class="form-group">
-                <label for="name">Ürün Adı:</label>
-                <textarea id="name" rows="5" placeholder="Ürün adını giriniz..."></textarea>
-            </div>
-            <!--Ürün Fiyatı-->
-            <div class="form-group">
-                <label for="price">Ürün Fiyatı:</label>
-                <input type="number" id="price" placeholder="Ürün fiyatı giriniz..." step="0.01">
-            </div>
-            <!-- Açıklama Alanı -->
-            <div class="form-group">
-                <label for="aciklama">Açıklama:</label>
-                <textarea id="aciklama" rows="5" placeholder="Açıklama giriniz..."></textarea>
-            </div>
 
-            <!-- Dosya Yükleme Alanı -->
-            <div class="form-group">
-                <label for="dosya">Resim/video seç:</label>
-                <input type="file" id="dosya">
-            </div>
 
-            <!-- Ekle Butonu -->
-            <button class="ekle-btn">EKLE</button>
+<div class="hakkimizda-container">
+    <h2 class="title">AKSESUAR VE EK ÜRÜN EKLE</h2>
+</div>
+
+<section id="addProducts">
+    <div class="form-container">
+        <div class="form-group">
+            <label for="urun-adi">Ürün Adı:</label>
+            <textarea id="name" rows="5" placeholder="Açıklama giriniz..."></textarea>
         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <!-- Sol Sütun -->
-            <div class="footer-column">
-                <h3>Telefon Tamiri</h3>
-                <ul>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/talep-olustur">Talep Oluştur</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/talep-sorgula">Talep Sorgula</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/aksesuar-ve-ek-ürünler">Aksesuar ve Ek
-                            Ürünler</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/hakkımızda">Hakkımızda</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/sikca-sorulan-sorular">SSS</a></li>
-                </ul>
-            </div>
-            <!-- Orta Sütun -->
-            <div class="footer-column">
-                <h3>İletişim</h3>
-                <p>Adres:Çankaya/Ankara</p>
-                <p>Email: <a href="mailto:destek@gmail.com">destek@gmail.com</a></p>
-                <p>Telefon: <a href="tel:+905XXXXXXXXX">0 (XXX) XXX XX XX</a></p>
-                <p>Çalışma Saatleri: 09:00 - 19:30</p>
-            </div>
-            <!-- Sağ Sütun -->
-            <div class="footer-column">
-                <h3>Sosyal Medya</h3>
-                <a href="https://www.instagram.com/"><img src="https://cdn-icons-png.flaticon.com/256/717/717392.png"
-                        alt="Instagram"></a>
-                <a href="https://x.com/home"><img
-                        src="https://logoeps.com/wp-content/uploads/2014/01/23931-twitter-logo-icon-vector-icon-vector-eps.png"
-                        alt="Twitter"></a>
-                <a href="https://www.whatsapp.com/"><img
-                        src="https://logoeps.com/wp-content/uploads/2014/03/33447-whatsapp-logo-icon-vector-icon-vector-eps.png"
-                        alt="WhatsApp"></a>
-            </div>
+        <!--Ürün Fiyatı-->
+        <div class="form-group">
+            <label for="urun-adi">Ürün Fiyatı:</label>
+            <textarea id="price" rows="5" placeholder="Açıklama giriniz..."></textarea>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 - Tüm Hakları Saklıdır. Telefon Tamiri</p>
+        <!-- Açıklama Alanı -->
+        <div class="form-group">
+            <label for="aciklama">Açıklama:</label>
+            <textarea id="aciklama" rows="5" placeholder="Açıklama giriniz..."></textarea>
         </div>
-    </footer>
 
-    <!-- Mesajlaşma Ikonu -->
-    <div class="message-icon">
-        <a href="https://tawk.to" target="_blank">
-            <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
-        </a>
+        <!-- Dosya Yükleme Alanı -->
+        <div class="form-group">
+            <label for="dosya">Resim/video seç:</label>
+            <input type="file" id="dosya">
+        </div>
+
+        <!-- Ekle Butonu -->
+        <button class="ekle-btn">EKLE</button>
     </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <!-- Sol Sütun -->
+        <div class="footer-column">
+            <h3>Telefon Tamiri</h3>
+            <ul>
+                <li><a href="/public/CustomerSide/html/talepOlustur.html">Talep Oluştur</a></li>
+                <li><a href="/public/CustomerSide/html/talepSorgula2.html">Talep Sorgula</a></li>
+                <li><a href="/public/CustomerSide/html/products.html">Aksesuar ve Ek
+                        Ürünler</a></li>
+                <li><a href="/public/CustomerSide/html/hakkımızda.html">Hakkımızda</a></li>
+                <li><a href="/public/CustomerSide/html/SSS.html">SSS</a></li>
+
+            </ul>
+        </div>
+        <!-- Orta Sütun -->
+        <div class="footer-column">
+            <h3>İletişim</h3>
+            <p>Adres:Çankaya/Ankara</p>
+            <p>Email: <a href="mailto:destek@gmail.com">destek@gmail.com</a></p>
+            <p>Telefon: <a href="tel:+905XXXXXXXXX">0 (XXX) XXX XX XX</a></p>
+            <p>Çalışma Saatleri: 09:00 - 19:30</p>
+        </div>
+        <!-- Sağ Sütun -->
+        <div class="footer-column">
+            <h3>Sosyal Medya</h3>
+            <a href="https://www.instagram.com/"><img src="https://cdn-icons-png.flaticon.com/256/717/717392.png"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img
+                    src="https://logoeps.com/wp-content/uploads/2014/01/23931-twitter-logo-icon-vector-icon-vector-eps.png"
+                    alt="Twitter"></a>
+            <a href="https://www.whatsapp.com/"><img
+                    src="https://logoeps.com/wp-content/uploads/2014/03/33447-whatsapp-logo-icon-vector-icon-vector-eps.png"
+                    alt="WhatsApp"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 - Tüm Hakları Saklıdır. Telefon Tamiri</p>
+    </div>
+</footer>
+
+<!-- Mesajlaşma Ikonu -->
+<div class="message-icon">
+    <a href="https://tawk.to" target="_blank">
+        <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
+    </a>
+</div>
 
     <script>
         document.querySelector('.ekle-btn').addEventListener('click', async () => {

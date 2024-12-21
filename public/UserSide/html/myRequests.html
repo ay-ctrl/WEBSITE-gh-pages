@@ -23,7 +23,6 @@
 <body class="main page-loading animation">
         <!-- Header -->
         <header>
-            <!-- Logo -->
             <div class="logo">
                 <a href="dashboard.html">
                     <img src="https://img.pikbest.com/origin/09/23/99/24DpIkbEsTkVb.png!sw800" alt="Telefon Tamiri"
@@ -48,216 +47,220 @@
                         </div>
                     </li>
                 </ul>
-            
+    
             </nav>
     
         </header>
-
-
-    <!-- ANA BAŞLIK -->
-    <section class="section-title">
-        <h1>TALEPLERİM</h1>
-    </section>
-
-    <!-- ARAMA ALANI 
-    <section class="search-bar">
-        <div class="search-container">
-            <label for="search"></label>
-            <input type="text" id="search" placeholder="Talep no/ Müşteri Adı vs">
-            <button class="search-btn">ARA</button>
+    
+    
+        <!-- Ana İçerik Alanı -->
+        <div class="hakkimizda-container">
+            <h2 class="title">TALEPLERİM</h2>
         </div>
-    </section> -->
-
-    <!-- TALEP TABLOSU -->
-    <section class="requests-container">
-        <table>
-            <thead>
-                <tr>
-                    <th><b>Talep No</b></th>
-                    <th><b>Model</b></th>
-                    <th><b>Müşteri Adı</b></th>
-                    <th><b>Telefon No</b></th>
-                    <th><b>Problem</b></th>
-                    <th><b>Tarih</b></th>
-                    <th><b>Durum</b></th>
-                    <th><b>Yedek Cihaz</b></th>
-                    <th><b>Ücret</b></th>
-                    <th><b>DÜZENLE</b></th>
-                    <th><b>SİL</b></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- buraya script ile form verilerinin html ini dolduruyoruz-->
-            </tbody>
-        </table>
-    </section>
-
-    <!-- SAYFALAMA -->
-    <section id="pagination-container" class="container">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <span>...</span>
-        <a href="#">11</a>
-    </section>
-
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <!-- Sol Sütun -->
-            <div class="footer-column">
-                <h3>Telefon Tamiri</h3>
-                <ul>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/talep-olustur">Talep Oluştur</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/talep-sorgula">Talep Sorgula</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/aksesuar-ve-ek-ürünler">Aksesuar ve Ek
-                            Ürünler</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/hakkımızda">Hakkımızda</a></li>
-                    <li><a href="https://telefon-tamiri-seng209-211.com.tr/sikca-sorulan-sorular">SSS</a></li>
-                </ul>
+    
+        <section id="container">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><b>Talep No</b></th>
+                            <th><b>Model</b></th>
+                            <th><b>Müşteri Adı</b></th>
+                            <th><b>Telefon No</b></th>
+                            <th><b>Problem</b></th>
+                            <th><b>Tarih</b></th>
+                            <th><b>Durum</b></th>
+                            <th><b>Yedek Cihaz</b></th>
+                            <th><b>Ücret</b></th>
+                            <th><b>DÜZENLE</b></th>
+                            <th><b>SİL</b></th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <!-- bu kısım backenden alınıyor-->
+                    </tbody>
+                </table>
             </div>
-            <!-- Orta Sütun -->
-            <div class="footer-column">
-                <h3>İletişim</h3>
-                <p>Adres:Çankaya/Ankara</p>
-                <p>Email: <a href="mailto:destek@gmail.com">destek@gmail.com</a></p>
-                <p>Telefon: <a href="tel:+905XXXXXXXXX">0 (XXX) XXX XX XX</a></p>
-                <p>Çalışma Saatleri: 09:00 - 19:30</p>
-            </div>
-            <!-- Sağ Sütun -->
-            <div class="footer-column">
-                <h3>Sosyal Medya</h3>
-                <a href="https://www.instagram.com/"><img src="https://cdn-icons-png.flaticon.com/256/717/717392.png"
-                        alt="Instagram"></a>
-                <a href="https://x.com/home"><img
-                        src="https://logoeps.com/wp-content/uploads/2014/01/23931-twitter-logo-icon-vector-icon-vector-eps.png"
-                        alt="Twitter"></a>
-                <a href="https://www.whatsapp.com/"><img
-                        src="https://logoeps.com/wp-content/uploads/2014/03/33447-whatsapp-logo-icon-vector-icon-vector-eps.png"
-                        alt="WhatsApp"></a>
-            </div>
+        </section>
+    
+    
+        <div class="pagination" id="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <span>...</span>
+            <a href="#">11</a>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 - Tüm Hakları Saklıdır. Telefon Tamiri</p>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <!-- Sol Sütun -->
+                <div class="footer-column">
+                    <h3>Telefon Tamiri</h3>
+                    <ul>
+                        <li><a href="/public/CustomerSide/html/talepOlustur.html">Talep Oluştur</a></li>
+                        <li><a href="/public/CustomerSide/html/talepSorgula2.html">Talep Sorgula</a></li>
+                        <li><a href="/public/CustomerSide/html/products.html">Aksesuar ve Ek
+                                Ürünler</a></li>
+                        <li><a href="/public/CustomerSide/html/hakkımızda.html">Hakkımızda</a></li>
+                        <li><a href="/public/CustomerSide/html/SSS.html">SSS</a></li>
+    
+                    </ul>
+                </div>
+                <!-- Orta Sütun -->
+                <div class="footer-column">
+                    <h3>İletişim</h3>
+                    <p>Adres:Çankaya/Ankara</p>
+                    <p>Email: <a href="mailto:destek@gmail.com">destek@gmail.com</a></p>
+                    <p>Telefon: <a href="tel:+905XXXXXXXXX">0 (XXX) XXX XX XX</a></p>
+                    <p>Çalışma Saatleri: 09:00 - 19:30</p>
+                </div>
+                <!-- Sağ Sütun -->
+                <div class="footer-column">
+                    <h3>Sosyal Medya</h3>
+                    <a href="https://www.instagram.com/"><img src="https://cdn-icons-png.flaticon.com/256/717/717392.png"
+                            alt="Instagram"></a>
+                    <a href="https://x.com/home"><img
+                            src="https://logoeps.com/wp-content/uploads/2014/01/23931-twitter-logo-icon-vector-icon-vector-eps.png"
+                            alt="Twitter"></a>
+                    <a href="https://www.whatsapp.com/"><img
+                            src="https://logoeps.com/wp-content/uploads/2014/03/33447-whatsapp-logo-icon-vector-icon-vector-eps.png"
+                            alt="WhatsApp"></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 - Tüm Hakları Saklıdır. Telefon Tamiri</p>
+            </div>
+        </footer>
+    
+        <!-- Mesajlaşma Ikonu -->
+        <div class="message-icon">
+            <a href="https://tawk.to" target="_blank">
+                <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
+            </a>
         </div>
-    </footer>
-
-    <!-- Mesajlaşma Ikonu -->
-    <div class="message-icon">
-        <a href="https://tawk.to" target="_blank">
-            <img src="https://cdn.pixabay.com/photo/2016/06/13/17/30/mail-1454733_640.png" alt="Mesajlaşma İkonu">
-        </a>
-    </div>
 
     <script>
-        async function fetchRequests(page = 1) {
-            try {
-                const response = await fetch(`http://localhost:3000/get-requests?page=${page}`);
-                const data = await response.json();
-                displayRequests(data.requests);
-                displayPagination(data.totalPages, data.currentPage);
-            } catch (err) {
-                console.error('Error fetching requests:', err);
-            }
-        }
+        let currentPage = 1;
+let totalPages = 0;
 
+// Talepleri getirir
+async function fetchRequests(page = 1) {
+    try {
+        const response = await fetch(`http://localhost:3000/get-requests?page=${page}`);
+        const data = await response.json();
 
-        function displayRequests(requests) {
-            const tbody = document.querySelector('tbody');
-            tbody.innerHTML = '';  // Mevcut içeriği temizle
+        currentPage = data.currentPage;
+        totalPages = data.totalPages;
 
-            // Talepleri tabloya ekleyin
-            requests.forEach(request => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${request.queryNum}</td>
-                    <td>${request.model}</td>
-                    <td>${request.name}</td>
-                    <td>${request.phone}</td>
-                    <td>${request.sorunlar}</td>
-                    <td>${new Date(request.createdAt).toLocaleString('tr-TR')}</td>
-                    <td>${request.state}</td>
-                    <td>${request.yedekCihaz}</td>
-                    <td>${request.price}</td>
-                    <td><a href="talepDüzenle.html?id=${request._id}"><button>📝</button></a></td>
-                    <td><button onclick="deleteRequest('${request._id}')">🗑️</button></td>
-                `;
-                tbody.appendChild(row);
+        displayRequests(data.requests);
+        displayPagination(totalPages, currentPage);
+    } catch (err) {
+        console.error('Error fetching requests:', err);
+    }
+}
+
+// Talepleri tabloya ekler
+function displayRequests(requests) {
+    const tbody = document.querySelector('.tbody');
+    tbody.innerHTML = '';  // Mevcut içeriği temizle
+
+    requests.forEach(request => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${request.queryNum}</td>
+            <td>${request.model}</td>
+            <td>${request.name}</td>
+            <td>${request.phone}</td>
+            <td>${request.sorunlar}</td>
+            <td>${new Date(request.createdAt).toLocaleString('tr-TR')}</td>
+            <td>${request.state}</td>
+            <td>${request.yedekCihaz}</td>
+            <td>${request.price}</td>
+            <td><a href="talepDüzenle.html?id=${request._id}"><button>📝</button></a></td>
+            <td><button onclick="deleteRequest('${request._id}')">🗑️</button></td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Sayfa numaralarını ve önceki/sonraki düğmelerini oluşturur
+function displayPagination(totalPages, currentPage) {
+    const container = document.getElementById('pagination');
+    container.innerHTML = '';  // Önceki sayfa numaralarını temizle
+
+    // Önceki sayfaya geçiş
+    if (currentPage > 1) {
+        const prevPage = document.createElement('a');
+        prevPage.textContent = 'Önceki';
+        prevPage.href = '#';
+        prevPage.addEventListener('click', (e) => {
+            e.preventDefault();
+            fetchRequests(currentPage - 1);
+        });
+        container.appendChild(prevPage);
+    }
+
+    // Sayfa numaraları
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('a');
+        pageButton.textContent = i;
+        pageButton.href = '#';
+        pageButton.className = i === currentPage ? 'active' : ''; // Aktif sayfayı vurgula
+        pageButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            fetchRequests(i);
+        });
+        container.appendChild(pageButton);
+    }
+
+    // Sonraki sayfaya geçiş
+    if (currentPage < totalPages) {
+        const nextPage = document.createElement('a');
+        nextPage.textContent = 'Sonraki';
+        nextPage.href = '#';
+        nextPage.addEventListener('click', (e) => {
+            e.preventDefault();
+            fetchRequests(currentPage + 1);
+        });
+        container.appendChild(nextPage);
+    }
+}
+
+// Talebi siler
+async function deleteRequest(id) {
+    const isConfirmed = confirm('Bu talebi silmek istediğinizden emin misiniz?');
+
+    if (isConfirmed) {
+        try {
+            const response = await fetch(`http://localhost:3000/delete-request/${id}`, {
+                method: 'DELETE',
             });
-        }
 
-        
-        function displayPagination(totalPages, currentPage) {
-            const container = document.getElementById('pagination-container');
-            container.innerHTML = '';  // Önceki sayfa numaralarını temizle
-
-            // Önceki sayfaya geçiş
-            if (currentPage > 1) {
-                const prevPage = document.createElement('button');
-                prevPage.textContent = 'Önceki';
-                prevPage.onclick = () => fetchRequests(currentPage - 1);
-                container.appendChild(prevPage);
-            }
-
-            // Sayfa numaraları
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.textContent = i;
-                if (i === currentPage) {
-                    pageBtn.disabled = true;  // Geçerli sayfa için butonu devre dışı bırak
-                } else {
-                    pageBtn.onclick = () => fetchRequests(i);
-                }
-                container.appendChild(pageBtn);
-            }
-
-            // Sonraki sayfaya geçiş
-            if (currentPage < totalPages) {
-                const nextPage = document.createElement('button');
-                nextPage.textContent = 'Sonraki';
-                nextPage.onclick = () => fetchRequests(currentPage + 1);
-                container.appendChild(nextPage);
-            }
-        }
-            
-
-
-        async function deleteRequest(id) {
-           // Kullanıcıdan silme işlemini onaylamasını istiyoruz
-            const isConfirmed = confirm('Bu talebi silmek istediğinizden emin misiniz?');
-
-            if (isConfirmed) {
-                try {
-                    const response = await fetch(`http://localhost:3000/delete-request/${id}`, {
-                        method: 'DELETE', // DELETE isteğini gönderiyoruz
-                    });
-
-                    if (response.ok) {
-                        console.log('Talep silindi');
-                        fetchRequests(); // Taleplerin güncellenmesi için yeniden istek yapılabilir
-                    } else {
-                        console.error('Silme başarısız');
-                    }
-                } catch (err) {
-                    console.error('Hata:', err);
-                }
+            if (response.ok) {
+                console.log('Talep silindi');
+                fetchRequests(currentPage); // Mevcut sayfayı yeniden yükle
             } else {
-                console.log('Silme işlemi iptal edildi.');
+                console.error('Silme başarısız');
             }
+        } catch (err) {
+            console.error('Hata:', err);
         }
+    } else {
+        console.log('Silme işlemi iptal edildi.');
+    }
+}
 
-        // Sayfa yüklendiğinde talepleri yükle
-        document.addEventListener('DOMContentLoaded', () => fetchRequests());
+// Sayfa yüklendiğinde talepleri yükle
+document.addEventListener('DOMContentLoaded', () => fetchRequests());
+
 
         /*document.querySelector('.search-btn').addEventListener('click', function() {
         const searchTerm = document.querySelector('#search').value.trim();
         fetchRequests(1, searchTerm); // Arama terimi ile talepleri yeniden yükle
         });*/
-
-
 
     </script>
 </body>
