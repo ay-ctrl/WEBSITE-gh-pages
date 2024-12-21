@@ -114,7 +114,9 @@ header {
     width: 80%;
     margin: 0 auto;
 }
-
+#campaign-description{
+    color:black;
+}
 h1,
 h2,
 h3,

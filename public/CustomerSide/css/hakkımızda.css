@@ -1,13 +1,16 @@
+/* Genel Stiller */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: #3f353c;
     color: #fff;
-}
-
-/* Header */
-header {
+    overflow-x: hidden;
+  }
+  
+  
+  /* Header */
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,93 +23,53 @@ header {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
     /* Header altına hafif bir gölge */
-}
-
-/* Header Container */
-.header .container {
+  }
+  
+  /* Header Container */
+  .header .container {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* Logo */
-header .logo img {
+  }
+  
+  /* Logo */
+  header .logo img {
     max-width: 120px;
     /* Logo boyutunu biraz artırdım */
-}
-
-/* Header ve Menü */
-header nav ul {
+  }
+  
+  /* Header ve Menü */
+  header nav ul {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
     gap: 30px;
     /* Menü arasındaki boşluğu artırdım */
-}
-
-header nav ul li {
+  }
+  
+  header nav ul li {
     position: relative;
     /* Dropdown'ın doğru konumlanabilmesi için */
-}
-
-header nav ul li a {
+  }
+  
+  header nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 2rem;
-    /* Menü bağlantı yazı boyutunu büyüttüm */
     font-weight: bold;
     padding: 25px 30px;
-    /* İç boşluğu artırdım */
-}
-
-header nav ul li:hover a {
-    background-color: #444;
-    /* Hover rengi */
-    color: #f0c040;
-}
-
-header nav ul li .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    /* Menüye hemen altına yerleştir */
-    left: 0;
-    background-color: #333;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 10px 0;
-    min-width: 200px;
-    /* Genişlik */
-    z-index: 1000;
-}
-
-/* Dropdown linklerinin stilleri */
-header nav ul li .dropdown-content a {
-    color: white;
+  
+  }
+  
+  header nav ul li:hover a {
+    background-color: transparent;
+    color: rgb(172, 98, 169);
     text-decoration: none;
-    padding: 15px 25px;
-    /* İç boşluğu artırdım */
-    display: block;
-    font-size: 1.8rem;
-    /* Dropdown bağlantı yazı boyutunu büyüttüm */
-    font-weight: normal;
-}
-
-header nav ul li:hover .dropdown-content {
-    display: block;
-    /* Hover sırasında dropdown'ı göster */
-}
-
-header nav ul li .dropdown-content a:hover {
-    background-color: #444;
-    /* Hover sırasında dropdown linki rengini değiştir */
-    color: #f0c040;
-    /* Hover rengini değiştirdim */
-}
-
-
-/* Giriş Butonu */
-header .auth-buttons a {
+  }
+  
+  
+  /* Giriş Butonu */
+  header .auth-buttons a {
     font-size: 2rem;
     /* Menü bağlantı yazı boyutunu büyüttüm */
     /* Yazı boyutunu büyüttüm */
@@ -119,15 +82,18 @@ header .auth-buttons a {
     color: black;
     border: 2px solid black;
     transition: 0.3s;
-}
-
-header .auth-buttons a:hover {
-    background-color: #f6c90e;
+  }
+  
+  header .auth-buttons a:hover {
+    background-color: rgb(172, 85, 169);
     color: black;
     border-color: black;
+    box-shadow: 0 5px 10px rgba(181, 126, 179, 0.5), 0 -5px 10px rgba(181, 126, 179, 0.5), 5px 0 10px rgba(181, 126, 179, 0.5), -5px 0 10px rgba(181, 126, 179, 0.5);
+  }
+
+#campaign-description{
+    color:black;
 }
-
-
 .container {
     width: 80%;
     margin: 0 auto;
