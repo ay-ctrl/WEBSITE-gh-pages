@@ -53,7 +53,33 @@
 
     </header>
 
-    <h1 class="main-title">Mağazadaki Ürünler</h1>
+    <div class="hakkimizda-container">
+        <h2 class="title">AKSESUAR VE EK ÜRÜNLER</h2>
+    </div>
+
+
+    <div class="filters">
+        <div class="categories">
+            <label for="category-select">Kategoriler:</label>
+            <select id="category-select">
+                <option value="all">Tüm Ürünler</option>
+                <option value="cases">Telefon Kılıfları</option>
+                <option value="chargers">Şarj Cihazları</option>
+                <option value="headphones">Kulaklıklar</option>
+                <option value="car-accessories">Araç Aksesuarları</option>
+                <option value="others">Diğer Ürünler</option>
+            </select>
+        </div>
+        <div class="sorting">
+            <label for="sort-select">Sırala:</label>
+            <select id="sort-select">
+                <option value="desc">En Pahalıdan En Ucuza</option>
+                <option value="asc">En Ucuzdan En Pahalıya</option>
+            </select>
+        </div>
+    </div>
+
+
     <div class="products" id="product-list">
         <div class="product-card">
             <img src="https://coflex.com.tr/wp-content/uploads/2021/01/resim-yok.jpg"
@@ -209,34 +235,46 @@
         }
 
         function renderPagination() {
-            const paginationContainer = document.getElementById('pagination');
-            paginationContainer.innerHTML = '';  // Önceki pagination'ı temizle
+        const paginationContainer = document.getElementById('pagination');
+        paginationContainer.innerHTML = '';  // Önceki pagination'ı temizle
 
-            // "Önceki" butonu
-            if (currentPage > 1) {
-                const prevButton = document.createElement('button');
-                prevButton.textContent = 'Önceki';
-                prevButton.addEventListener('click', () => changePage(currentPage - 1));
-                paginationContainer.appendChild(prevButton);
-            }
-
-            // Sayfa numaraları
-            for (let i = 1; i <= totalPages; i++) {
-                const pageButton = document.createElement('button');
-                pageButton.textContent = i;
-                pageButton.className = i === currentPage ? 'active' : '';  // Aktif sayfayı vurgula
-                pageButton.addEventListener('click', () => changePage(i));
-                paginationContainer.appendChild(pageButton);
-            }
-
-            // "Sonraki" butonu
-            if (currentPage < totalPages) {
-                const nextButton = document.createElement('button');
-                nextButton.textContent = 'Sonraki';
-                nextButton.addEventListener('click', () => changePage(currentPage + 1));
-                paginationContainer.appendChild(nextButton);
-            }
+        // "Önceki" butonu
+        if (currentPage > 1) {
+            const prevButton = document.createElement('a');
+            prevButton.textContent = 'Önceki';
+            prevButton.href = '#';
+            prevButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                changePage(currentPage - 1);
+            });
+            paginationContainer.appendChild(prevButton);
         }
+
+        // Sayfa numaraları
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('a');
+            pageButton.textContent = i;
+            pageButton.href = '#';
+            pageButton.className = i === currentPage ? 'active' : '';  // Aktif sayfayı vurgula
+            pageButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                changePage(i);
+            });
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // "Sonraki" butonu
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('a');
+            nextButton.textContent = 'Sonraki';
+            nextButton.href = '#';
+            nextButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                changePage(currentPage + 1);
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+    }
 
         // Sayfa ilk yüklendiğinde ürünleri getir
         fetchProducts();
