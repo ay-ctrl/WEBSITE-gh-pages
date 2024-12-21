@@ -397,7 +397,7 @@ footer {
 /* Footer Bağlantıları */
 .footer-link {
     font-size: 1.2rem;
-    color: #ffdd00;
+    color: rgb(172, 85, 169);
     text-decoration: none;
 }
 
@@ -419,7 +419,7 @@ footer {
 }
 
 .footer-column a {
-    color: #ffdd00;
+    color: rgb(172, 85, 169);
     text-decoration: none;
 }
 
@@ -447,7 +447,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding: 10px;
-    background-color: #fff;
+    background-color: #cdbac8;
     color: #000;
 }
 
