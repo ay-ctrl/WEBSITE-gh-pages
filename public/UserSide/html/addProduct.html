@@ -78,7 +78,7 @@
         <!-- Dosya Yükleme Alanı -->
         <div class="form-group">
             <label for="dosya">Resim/video seç:</label>
-            <input type="file" id="dosya">
+            <input type="file" id="dosya" name="file">
         </div>
 
         <!-- Ekle Butonu -->
@@ -161,12 +161,18 @@
             body: formData,
         });
 
-        if (!response.ok) {
-            console.error('Hata:', response.statusText);
-            alert('Ürün eklenirken bir hata oluştu!');
-        } else {
+         // Yanıt kontrolü
+         if (response.ok) {
+            const data = await response.json();
             console.log('Ürün başarıyla eklendi!');
             alert('Ürün başarıyla eklendi!');
+            document.getElementById('name').value="";
+            document.getElementById('price').value="";
+            document.getElementById('aciklama').value="";
+        } else {
+            const data = await response.json();
+            console.error('Hata:', data.error || response.statusText);
+            alert('Ürün eklenirken bir hata oluştu!');
         }
     } catch (err) {
         console.error('Fetch hatası:', err);
