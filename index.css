@@ -94,7 +94,7 @@ header .auth-buttons a:hover {
 
 /* Telefonunuz Mu Bozuldu */
 #telefonunuz {
-  margin-top: 30px;
+  margin-top: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -188,7 +188,6 @@ header .auth-buttons a:hover {
 #telefonunuz .image-container {
   max-width: 60%;
   text-align: right;
-  margin-top: 90px;
 }
 
 #telefonunuz .image-container img {
