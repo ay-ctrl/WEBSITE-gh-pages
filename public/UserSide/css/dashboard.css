@@ -290,27 +290,32 @@ header nav ul li .dropdown-content a:hover {
   /* Okların arkasındaki siyah zemin */
 }
 
+
+
 .icon-container {
   display: flex;
-  align-items: center; /* Yatay eksende aynı yükseklikte hizalar */
-  justify-content: space-between; /* Yazı ortada, ikon sağda olacak şekilde hizalama */
-}
-
-.add-icon {
-  display: inline-block;
-  font-size: 70px;
-  cursor: pointer;
-  margin-right: auto; 
+  align-items: center; /* Yatayda hizalama */
+  justify-content: space-between; /* Yazı ve ikon arasında boşluk */
+  padding-right: 20px; /* Sağ tarafa ekstra boşluk */
 }
 
 .icon-container h3 {
   margin: 0; 
-  font-size: 18px; 
-  text-align: center; 
-  flex-grow: 1; 
+  font-size: 24px; /* Yazı boyutunu değiştirmez */
+  text-align: left; /* Sol hizalama */
+  flex-grow: 0; /* Yazının genişlemesini engeller */
+  margin-left: 90px;
 }
 
-
+.add-icon {
+  display: inline-block;
+  font-size: 70px; /* İkon boyutunu değiştirmez */
+  cursor: pointer;
+  margin-right: 100px; /* Varsayılan sağ boşluk */
+  margin-left: auto; /* İkonu tamamen sağa iter */
+  color: white; /* İkon rengi */
+  transform: translateX(35px); /* İkonu sağa kaydırır */
+}
 
 
 

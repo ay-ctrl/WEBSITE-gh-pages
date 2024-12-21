@@ -232,6 +232,17 @@ header .auth-buttons a:hover {
 
 }
 
+.icon-container {
+  display: flex;
+  align-items: center; /* Yatayda hizalama */
+  margin-left: 125px;
+}
+
+.icon-container h3{
+  color:white;
+  text-align: left;
+}
+
 .carousel-inner {
   background-color: white !important;
   /* Slider içindeki arka planı siyah yap */
@@ -253,28 +264,6 @@ header .auth-buttons a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   /* Okların arkasındaki siyah zemin */
 }
-
-.icon-container {
-  display: flex;
-  align-items: center; /* Yatay eksende aynı yükseklikte hizalar */
-  justify-content: space-between; /* Yazı ortada, ikon sağda olacak şekilde hizalama */
-}
-
-.add-icon {
-  display: inline-block;
-  font-size: 70px;
-  cursor: pointer;
-  margin-right: auto; 
-}
-
-.icon-container h3 {
-  margin: 0; 
-  font-size: 18px; 
-  text-align: center; 
-  flex-grow: 1; 
-}
-
-
 
 
 

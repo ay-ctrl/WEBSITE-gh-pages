@@ -23,7 +23,6 @@
 <body class="main page-loading animation">
     <!-- Header -->
     <header>
-        <!-- Logo -->
         <div class="logo">
             <a href="dashboard.html">
                 <img src="https://img.pikbest.com/origin/09/23/99/24DpIkbEsTkVb.png!sw800" alt="Telefon Tamiri"
@@ -48,15 +47,18 @@
                     </div>
                 </li>
             </ul>
-        
+
         </nav>
 
     </header>
 
 
-    <!-- Ana İçerik Alanı -->
-    <main class="hakkimizda-container">
-        <h2 class="title">HAKKIMIZDA</h2>
+
+
+    <div class="hakkimizda-container">
+        <h2 class="title">MEDYA EKLE</h2>
+    </div>
+    <section id="medyaEkle">
         <div class="form-container">
             <!-- Açıklama Alanı -->
             <div class="form-group">
@@ -73,7 +75,11 @@
             <!-- Ekle Butonu -->
             <button class="ekle-btn" onclick="submitForm()">EKLE</button>
         </div>
-    </main>
+    </section>
+
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -142,6 +148,9 @@
                 const data = await response.json();
                 if (data.success) {
                     alert('Medya başarıyla eklendi!');
+                    // Form inputlarını boşalt
+                    document.getElementById('aciklama').value = '';
+                    document.getElementById('dosya').value = '';  // Dosya inputu da boşaltılır
                 } else {
                     alert('Bir hata oluştu1!');
                 }
