@@ -9,6 +9,7 @@ body {
 }
 
 
+
 /* Header */
 header {
   display: flex;
@@ -687,3 +688,5 @@ footer {
   transform: scale(1.1);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
 }
+
+
